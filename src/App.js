@@ -1,33 +1,45 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { decrementAction, incrementAction,resetAction } from "./redux/action";
+import { decrementAction, incrementAction, resetAction } from "./redux/action";
+import { rotateAction } from "./actions/startAction";
 
 function App() {
-  const { count } = useSelector((state) => state);
+  const data = useSelector((state) => state);
+  console.log(data);
+  const { counter, rotate } = data;
   const dispatch = useDispatch();
   const handleIncrement = () => {
     dispatch(incrementAction());
   };
-  const handleDecrement=()=>{
+  const handleDecrement = () => {
     dispatch(decrementAction());
-  }
+  };
 
-  const handleReset=()=>{
+  const handleReset = () => {
     dispatch(resetAction());
-  }
-  console.log(count);
+  };
+  const handleRotating = () => {
+    console.log("Rotate");
+    dispatch(rotateAction(!rotate.rotating));
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         {count}
-        </p>
+        <div onClick={handleRotating}>
+          <img
+            src={logo}
+            className={"App-logo" + (rotate.rotating ? "" : "App-logo-paused")}
+            alt="logo"
+          />
+         <p>Adi Matter</p>
+        </div>
+
+        <p>{counter.count}</p>
         <button onClick={handleIncrement}>Increment Counter</button>
-        <br/>
+        <br />
         <button onClick={handleDecrement}>Decrement Counter</button>
-        <br/>
+        <br />
         <button onClick={handleReset}>Reset Counter</button>
       </header>
     </div>

@@ -6,12 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
-.App-logo-paused{
-  animation-play-state: paused;
+
+.App-logo-paused {
+  animation-play-state: paused; /* Pause the rotation animation */
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+  .App-logo-paused {
+    animation-play-state: paused; /* Pause the rotation animation */
   }
 }
 
