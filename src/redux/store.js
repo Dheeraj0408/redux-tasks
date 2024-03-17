@@ -1,11 +1,5 @@
-// const { legacy_createStore } = require("redux");
-import { combineReducers, legacy_createStore } from "redux";
-import { countReducer } from "./reducer";
-import rotateReducer from "../reducers/rotateReducer";
+import { legacy_createStore } from "redux";
+import { rootReducer } from "./combineReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const rootReducer = combineReducers({
-  counter: countReducer,
-  rotate: rotateReducer,
-});
-
-export const reduxStore = legacy_createStore(rootReducer);
+export const reduxStore = legacy_createStore(rootReducer,composeWithDevTools());

@@ -1,6 +1,6 @@
 const initialState = { rotating: true };
 
-const rotateReducer = (state = initialState, action) => {
+export const rotateReducer = (state = initialState, action) => {
   switch (action.type) {
     case "rotate":
       return { ...state,rotating: action.payload };
@@ -8,4 +8,4 @@ const rotateReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default rotateReducer;
+
